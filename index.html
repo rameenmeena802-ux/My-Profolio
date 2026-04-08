@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Glow Mart</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  text-align: center;
+
+  background: linear-gradient(45deg, #1e3c72, #2a5298, #ff6a00, #ee0979);
+  background-size: 400% 400%;
+  animation: bg 10s ease infinite;
+
+  padding: 15px; /* reduced space */
+}
+
+@keyframes bg {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+/* ================= TOP BAR ================= */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.login-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg,#00c6ff,#0072ff);
+}
+
+/* ================= GRID (FIX SPACE) ================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;   /* FIXED SPACE */
+  padding: 10px;
+}
+
+/* ================= CARD (COMPACT) ================= */
+.card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 10px;  /* reduced */
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 6px;
+}
+
+/* TITLE */
+.card h3 {
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+/* BUTTON */
+.btn {
+  margin-top: 6px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg,#ff6a00,#ee0979);
+}
+
+/* ================= CART ================= */
+.cart {
+  position: fixed;
+  right: 10px;
+  top: 80px;
+  width: 160px;
+  padding: 10px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 10px;
+}
+
+/* ================= FEEDBACK ================= */
+.feedback {
+  margin-top: 30px;
+  padding: 15px;
+}
+
+.feedback input {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  width: 60%;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <h2>🌟 Glow Mart</h2>
+  <button class="login-btn" onclick="login()">Login</button>
+</div>
+
+<!-- CART -->
+<div class="cart">
+  <h4>🛒 Cart</h4>
+  <ul id="cartList"></ul>
+</div>
+
+<!-- PRODUCTS -->
+<div class="grid">
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600" alt="">
+    <h3>Smart Lamp</h3>
+    <button class="btn" onclick="addCart('Smart Lamp')">Add</button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600" alt="">
+    <h3>Neon Watch</h3>
+    <button class="btn" onclick="addCart('Neon Watch')">Add</button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d1c?w=600" alt="">
+    <h3>Glow Light</h3>
+    <button class="btn" onclick="addCart('Glow Light')">Add</button>
+  </div>
+
+</div>
+
+<!-- FEEDBACK -->
+<div class="feedback">
+  <h3>💬 Feedback</h3>
+  <input id="fb" placeholder="Write feedback">
+  <button class="btn" onclick="sendFB()">Send</button>
+</div>
+
+<script>
+
+function login(){
+  let name = prompt("Enter your name:");
+  if(name){
+    alert("Welcome " + name + " 🌟");
+  }
+}
+
+function addCart(item){
+  let li = document.createElement("li");
+  li.innerText = item;
+  document.getElementById("cartList").appendChild(li);
+}
+
+function sendFB(){
+  let val = document.getElementById("fb").value;
+  if(val==""){
+    alert("Write feedback!");
+  } else {
+    alert("Thanks for feedback 🌟");
+    document.getElementById("fb").value="";
+  }
+}
+
+</script>
+
+</body>
+</html>
